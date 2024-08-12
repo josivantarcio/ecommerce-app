@@ -23,6 +23,7 @@ mongoose.connect(dbURI)
 // Configurações de Middleware
 app.set('view engine', 'ejs');
 app.use('/public', express.static(path.join(__dirname, 'public')));
+app.use('/public/images', express.static(path.join(__dirname, 'public/images')));
 app.use(compression());
 app.use(cors());
 app.disable('x-powered-by');
@@ -34,7 +35,7 @@ if (!isProduction) app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false, limit: '1.5mb' }));
 app.use(express.json({ limit: '1.5mb' }));
 
-// Importando os modelos e rotas
+// ## Importando os modelos e rotas
 // require('./models');
 // app.use('/', require('./routes'));
 
