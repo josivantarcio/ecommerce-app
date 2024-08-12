@@ -35,9 +35,9 @@ if (!isProduction) app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false, limit: '1.5mb' }));
 app.use(express.json({ limit: '1.5mb' }));
 
-// ## Importando os modelos e rotas
-// require('./models');
-// app.use('/', require('./routes'));
+// Importando os modelos e rotas
+require('./models');
+app.use('/', require('./routes'));
 
 // Tratamento de erro 404
 app.use((req, res, next) => {
