@@ -1,34 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 
 <head>
-    <% include ../partials/header %>
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <title>Recuperar Senha</title>
+    <!-- Inclusão do Header -->
+    <%- include('../partials/header') %>
+    <!-- CSS do Bootstrap -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 </head>
 
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-sm-6 col-sm-offset-3">
+            <div class="col-sm-3 col-sm-offset-3">
                 <h2>Recuperar Senha</h2>
                 <hr />
-                <hr />
+                <br />
 
-                <% if(sucess){ %>
+                <% if (success) { %>
                     <div class="alert alert-success">
-                        <%= Senha alterada com sucesso! %>
+                        <%= success %>
                     </div>
                     <div class="text-center">
                         <h3>Faça login agora</h3>
                     </div>
                 <% } %>
 
-                <% if(error){ %>
+                <% if (error) { %>
                     <div class="alert alert-danger">
                         <%= error %>
                     </div>
                 <% } %>
-                <% if(!sucess) { %>
+
+                <% if (!sucess) { %>
                     <p>
                         Digite sua nova senha
                     </p>
@@ -41,13 +45,14 @@
                                 name="password"
                                 class="form-control"
                                 placeholder="Digite sua senha"
-                                />
+                                required
+                            />
                         </div>
-                        <button class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary">
                             Criar Nova Senha
                         </button>
                     </form>
-                <% } %>                    
+                <% } %>
             </div>
         </div>
     </div>

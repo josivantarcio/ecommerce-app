@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Usuario = mongoose.model("Usuario");
-//const enviarEmailRecovery = require("../helpers/email-recovery");
+const enviarEmailRecovery = require("../helpers/email-recovery");
 
 class UsuarioController {
 
@@ -32,7 +32,7 @@ class UsuarioController {
     store(req, res, next) {
         const { nome, email, password } = req.body;
 
-        if (!nome ||!email ||!password) return res.status(422).json({ errors: { all: "Todos os campos são obrigatórios" } });
+        if (!nome || !email || !password) return res.status(422).json({ errors: { all: "Todos os campos são obrigatórios" } });
 
         const usuario = new Usuario({ nome, email });
         usuario.setSenha(password);
@@ -95,7 +95,9 @@ class UsuarioController {
             if (!usuario) return res.render('recovery', { error: "Email não encontrado", success: null });
             const recoveryData = usuario.criarTokenRecuperacaoSenha();
             return usuario.save().then(() => {
-                return res.render('recovery', { error: null, success: true });
+                enviarEmailRecovery({ usuario, recovery: recoveryData }, (error = null, success = null) =>{
+                    return res.render('recovery', { error, success }); 
+                });
             }).catch(next);
         }).catch(next);
     }
