@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Usuario = mongoose.model("Usuario");
-const enviarEmailRecovery = require("../helpers/email-recovery");
+//const enviarEmailRecovery = require("../helpers/email-recovery");
 
 class UsuarioController {
 
@@ -106,7 +106,7 @@ class UsuarioController {
         Usuario.findOne({ "recovery.token": req.query.token }).then((usuario) => {
             if (!usuario) return res.render("recovery", { error: "Token inválido", success: null });
             if (new Date(usuario.recovery.date) < new Date()) return res.render("recovery", { error: "Token expirado", success: null });
-            return res.render("recovery/store", { error: null, sucess: null, token: req.query.token });
+            return res.render("recovery/store", { error: null, success: null, token: req.query.token });
         }).catch(next);
     }
 
@@ -125,5 +125,8 @@ class UsuarioController {
                     token: null
                 });
             }).catch(next);
-        }
+        }).catch(next);
+    }
 }
+
+module.exports = UsuarioController;

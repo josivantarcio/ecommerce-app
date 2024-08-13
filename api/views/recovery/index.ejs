@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <% include ../partials/header %>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+                <h2>Recuperar Senha</h2>
+                <hr />
+                <hr />
+
+                <% if(sucess){ %>
+                    <div class="alert alert-success">
+                        <%= Senha alterada com sucesso! %>
+                    </div>
+                <% } %>
+
+                <% if(error){ %>
+                    <div class="alert alert-danger">
+                        <%= error %>
+                    </div>
+                    <% } %>
+
+                    <p>
+                        Por favor, informe seu email para recuperar sua senha.
+                    </p>
+
+                    <form action="/v1/api/usuarios/recuperar-senha" method="POST">
+                        <div class="form-group">
+                            <input 
+                                type="email"
+                                name="email"
+                                class="form-control"
+                                placeholder="Digite seu e-mail"
+                                />
+                        </div>
+                        <button class="btn btn-primary">
+                            Recuperar Senha
+                        </button>
+                    </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
