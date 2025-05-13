@@ -1,6 +1,68 @@
-# Ecommerce App
+# E-commerce Application
 
-Bem-vindo ao projeto **Ecommerce App**! Este é um aplicativo de comércio eletrônico completo construído com React para o frontend e Node.js/Express para o backend. O objetivo deste projeto é fornecer uma solução de e-commerce moderna e funcional que pode ser facilmente personalizada e expandida.
+A modern full-stack e-commerce platform built with Spring Boot (Java 21) and React. Features secure authentication with JWT, PostgreSQL database, and Material-UI components. The application follows REST API principles and implements best practices for security and scalability.
+
+## Backend (Spring Boot)
+
+### Prerequisites
+- Java 21
+- Maven
+- PostgreSQL
+
+### Setup
+1. Create a PostgreSQL database named `ecommerce`
+2. Update the database credentials in `api/src/main/resources/application.yml` if needed
+3. Navigate to the `api` directory
+4. Run the application:
+```bash
+./mvnw spring-boot:run
+```
+
+The backend will be available at `http://localhost:8080/api`
+
+## Frontend (React)
+
+### Prerequisites
+- Node.js (v16 or higher)
+- npm
+
+### Setup
+1. Navigate to the `frontend` directory
+2. Install dependencies:
+```bash
+npm install
+```
+3. Start the development server:
+```bash
+npm run dev
+```
+
+The frontend will be available at `http://localhost:5173`
+
+## Features
+- User authentication (login/register)
+- JWT-based security
+- Protected routes
+- Material-UI components
+- Redux state management
+
+## API Endpoints
+
+### Authentication
+- POST `/api/auth/register` - Register a new user
+- POST `/api/auth/login` - Login user
+
+## Security
+- JWT token-based authentication
+- Password encryption
+- Protected API endpoints
+
+## Development
+- Backend: Spring Boot 3.2.3
+- Frontend: React with TypeScript
+- Database: PostgreSQL
+- Authentication: JWT
+- UI Framework: Material-UI
 
 ## Estrutura do Projeto
 
